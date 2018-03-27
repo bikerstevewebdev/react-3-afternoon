@@ -1,32 +1,36 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import './Edit.css';
+import './Edit.css'
 
 //////////////////////////////////////////////////////// THIS COMPONENT IS BEING RENDERED IN THE *POST* COMPONENT
 
 export default class Edit extends Component {
   constructor( props ) {
-    super( props );
+    super( props )
 
     this.state = {
-      text: props.text
+      text: this.props.text
     };
 
-    this.updatePost = this.updatePost.bind( this );
+    this.updatePost = this.updatePost.bind( this )
+    this.udateText = this.updateText.bind(this)
   }
 
   updateText( value ) {
     this.setState({ text: value });
   }
 
-  updatePost() {
+  updatePost(id, text) {
+    this.props.updatePost(id, text)
+    // this.setState({
 
+    // })
   }
 
   render() {
     // More destructuring!
-    const { hideEdit } = this.props;
-    const { text } = this.state;
+    const { hideEdit } = this.props
+    const { text } = this.state
 
     return (
       <section className="Edit__parent">
@@ -38,7 +42,7 @@ export default class Edit extends Component {
           {/* This saves your changes made */}
           <button id="Edit__controls-update" 
                   className="Edit__control-btn"
-                  onClick={ this.updatePost }>
+                  onClick={ () => this.updatePost(this.props.id, text) }>
             Update
           </button>
 

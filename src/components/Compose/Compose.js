@@ -45,7 +45,7 @@ export default class Compose extends Component {
         </div>
 
         <div className="Compose__bottom">
-          <button onClick={ this.createPost }>Compose</button>
+          <button onClick={ () => this.props.createPost(text) }>Compose</button>
         </div>
       </section>
     )
